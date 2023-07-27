@@ -1,13 +1,49 @@
-body {
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  /* font-family:sans-serif; */
+  box-sizing: border-box;
+  box-shadow: 10px;
+  /* ckckground-color: aqua; */
+  
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.myBg{
+  /* background-color: #207865; */
+  /* background:linear-gradient(to bottom,rgba(255,199,90,1),rgba(255,199,50,0.5))center; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* color: white; */
+  /* background:linear-gradient(to top, rgb(0,0,0), rgba(255,190,89,0.5), url(./Assets/c17.jpg)center); */
 }
+html{
+  scroll-behavior: smooth;
+}
+.btn.btn-primary.go-top{
+  justify-content: end;
+  display: flex;
+  flex-direction: row;
+  float:left;
+}
+.error{
+  color:red;
+  position:relative;
+}
+.link{
+  transition: all 2s ease;
+}
+.link:hover{
+  color: pink;
+}
+#links{
+  color:white;
+  text-decoration: none;
+  transition: 1s ease;
+}
+#links:hover{
+  color:blue;
+  text-decoration-line: underline;
+  text-decoration-thickness: 8px;
+
+}
+
