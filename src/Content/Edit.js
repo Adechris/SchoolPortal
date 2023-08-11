@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { Container, Form, Modal } from "react-bootstrap";
 import { Trash, Pen } from "react-bootstrap-icons";
 const Edit = () => {
-  const [firstName, setFirstName] = useState("");
+
+  const storeDetails = () =>{
+  let store = localStorage.getItem('fname');
+  if (store) {
+    return JSON.parse(localStorage.getItem('fname'))
+  }
+   else if(localStorage.getItem('lname')){
+    return JSON.parse(localStorage.getItem('lname'))
+  }
+   else if(localStorage.getItem('dept')){
+    return JSON.parse(localStorage.getItem('dept'))
+  }
+   else if(localStorage.getItem('mat')){
+    return JSON.parse(localStorage.getItem('mat'))
+  }
+  else{
+    return []
+  }
+}
+
+  const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState("");
   const [matric, setMatric] = useState("");
   const [dept, setDept] = useState("");
-  const [todo, setTodo] = useState([]);
+  const [todo, setTodo] = useState(storeDetails());
   const [show, setShow] = useState(false);
   const [userIndex, setUserIndex] = useState(0);
 
@@ -17,7 +37,6 @@ const Edit = () => {
   const [newDept, setNewDept] = useState("");
 
   const handleClose = () => setShow(false);
-
   const handleShow = (item, index) => {
     setShow(true);
     setUserIndex(index);
@@ -67,6 +86,29 @@ const Edit = () => {
     setTodo(todo.filter((item, ind) => ind !== index));
   };
 
+
+
+useEffect(()=>{
+localStorage.setItem('fname', JSON.stringify(todo))
+},[todo])
+
+useEffect(()=>{
+localStorage.setItem('lname', JSON.stringify(todo))
+},[todo])
+
+useEffect(()=>{
+localStorage.setItem('mat', JSON.stringify(todo))
+},[todo])
+
+useEffect(()=>{
+localStorage.setItem('dept', JSON.stringify(todo))
+},[todo])
+
+
+
+
+
+
   return (
     <Container className="mt-5">
       <h3 className=" text-center text-primary">STUDENT REGISTRATION</h3>
@@ -80,7 +122,7 @@ const Edit = () => {
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
         />
-         <label className="mt-3">Last Name</label>
+       <label className="mt-3">Last Name</label>
         <input
           type="text"
           className="form-control shadow-none "
@@ -111,7 +153,7 @@ const Edit = () => {
       </form>
 
       {todo.length > 0 ? (
-        <table className="table table-striped text-center mt-4">
+        <table className="table  table-hover text-center mt-4">
           <thead>
             <tr>
               <th>S/N</th>
