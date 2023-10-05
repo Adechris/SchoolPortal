@@ -111,7 +111,7 @@ localStorage.setItem('dept', JSON.stringify(todo))
 
   return (
     <Container className="mt-5">
-      <h3 className=" text-center text-primary">STUDENT REGISTRATION</h3>
+      <h3 className=" text-center text-primary">STUDENTS REGISTRATION</h3>
       <marquee className='text-success'>Welcome To Our Registration Page</marquee>
       <form onSubmit={handleSubmit}>
         <label >First Name</label>
